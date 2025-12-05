@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# React Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# Code coverage reports
+coverage/
+
+# Typescript
+*.tsbuildinfo
+
+# Native folders
+/ios
+/android

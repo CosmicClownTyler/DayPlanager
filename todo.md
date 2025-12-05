@@ -2,7 +2,7 @@
 
 ## App Configuration:
 1. [x] Setup version control
-2. [ ] Basic setup and project for typescript app
+2. [x] Basic setup and project for typescript app
 3. [ ] Organize app structure
 4. [ ] Setup app for EAS Update releases
 5. [ ] Configure app for App Store (android and iOS keys)
