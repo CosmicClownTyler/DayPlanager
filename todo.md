@@ -3,7 +3,7 @@
 ## App Configuration:
 1. [x] Setup version control
 2. [x] Basic setup and project for typescript app
-3. [ ] Organize app structure
+3. [x] Organize app structure
 4. [ ] Setup app for EAS Update releases
 5. [ ] Configure app for App Store (android and iOS keys)
 6. [ ] Configure push notifications
@@ -17,7 +17,7 @@
 5. [ ] Develop basic UI components
 6. [ ] Make unit tests for UI components
 7. [ ] Make database and API endpoints for database
-8.  [ ] Make unit tests for API endpoints
+8. [ ] Make unit tests for API endpoints
 
 
 ## Additional Miscellaneous Notes and Reminders:
