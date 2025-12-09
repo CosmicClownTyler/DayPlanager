@@ -31,6 +31,12 @@
                 "projectId": "fa0f230f-7db5-4367-bf1b-e342360adb27"
             }
         },
-        "owner": "cosmicclowntyler"
+        "owner": "cosmicclowntyler",
+        "runtimeVersion": {
+            "policy": "appVersion"
+        },
+        "updates": {
+            "url": "https://u.expo.dev/fa0f230f-7db5-4367-bf1b-e342360adb27"
+        }
     }
 }
