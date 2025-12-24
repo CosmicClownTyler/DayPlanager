@@ -4,20 +4,20 @@
         "slug": "day-planager",
         "version": "0.1.0",
         "orientation": "portrait",
-        "icon": "./assets/icon.png",
+        "icon": "./assets/app/icon.png",
         "userInterfaceStyle": "dark",
         "newArchEnabled": true,
         "splash": {
-            "image": "./assets/splash-icon-light.png",
+            "image": "./assets/app/splash-icon-light.png",
             "resizeMode": "contain",
             "backgroundColor": "#000000"
         },
         "ios": {
             "supportsTablet": true,
             "icon": {
-                "light": "./assets/ios-light.png",
-                "dark": "./assets/ios-dark.png",
-                "tinted": "./assets/ios-tinted.png"
+                "light": "./assets/app/ios-light.png",
+                "dark": "./assets/app/ios-dark.png",
+                "tinted": "./assets/app/ios-tinted.png"
             },
             "bundleIdentifier": "com.cosmicclowntyler.dayplanager",
             "infoPlist": {
@@ -26,7 +26,7 @@
         },
         "android": {
             "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
+                "foregroundImage": "./assets/app/adaptive-icon.png",
                 "backgroundColor": "#000000"
             },
             "edgeToEdgeEnabled": true,
@@ -34,7 +34,7 @@
             "package": "com.cosmicclowntyler.dayplanager"
         },
         "web": {
-            "favicon": "./assets/favicon.png"
+            "favicon": "./assets/app/favicon.png"
         },
         "extra": {
             "eas": {
