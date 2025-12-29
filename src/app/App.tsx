@@ -2,6 +2,9 @@ import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Provider } from 'react-redux';
+
+import { store } from '@/src/store';
 
 import { HomeIcon, SettingsIcon } from '@/src/components/TabBarIcons';
 
@@ -10,10 +13,14 @@ import SettingsScreen from '@/src/screens/SettingsScreen';
 
 import type { RootBottomTabParamList } from '@/src/app/Navigation';
 
+import { useThemeColors } from '@/src/hooks/store';
+
 export default function App() {
     return (
         <SafeAreaProvider>
-            <AppComponent />
+            <Provider store={store}>
+                <AppComponent />
+            </Provider>
         </SafeAreaProvider>
     );
 };
@@ -21,9 +28,12 @@ export default function App() {
 const Tab = createBottomTabNavigator<RootBottomTabParamList>();
 
 export function AppComponent() {
+    // Get the theme colors
+    const themeColors = useThemeColors();
+
     return (
         <NavigationContainer>
-            <StatusBar backgroundColor='#000' barStyle='light-content' />
+            <StatusBar backgroundColor={themeColors.background} barStyle={themeColors.isDark ? 'light-content' : 'dark-content'} />
             <Tab.Navigator
                 initialRouteName='Home'
                 screenOptions={({ route }) => ({
@@ -31,13 +41,13 @@ export function AppComponent() {
                     headerShown: false,
                     // Bottom tab options
                     tabBarStyle: {
-                        backgroundColor: '#000',
+                        backgroundColor: themeColors.background,
                         borderWidth: 0,
                         borderTopWidth: 1,
-                        borderColor: '#666',
+                        borderColor: themeColors.borders,
                     },
-                    tabBarInactiveTintColor: "#666",
-                    tabBarActiveTintColor: '#fff',
+                    tabBarInactiveTintColor: themeColors.secondary,
+                    tabBarActiveTintColor: themeColors.accent,
                     tabBarIcon: ({ color, size }) => {
                         if (route.name === 'Home')
                             return <HomeIcon color={color} size={size} />;
