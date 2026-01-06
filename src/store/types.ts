@@ -1,27 +1,18 @@
-import type { ColorHex } from '@/src/theme/colors';
+import { store } from './reducer';
+
+import type { SettingsState } from './settings/types';
 
 /**
- * The shape of the app state.
+ * The shape of the app state
  */
 export interface AppState {
     settings: SettingsState;
 };
 /**
- * The shape of the settings state.
+ * The type of the store variable
  */
-export interface SettingsState {
-    /** The theme state. */
-    theme: ThemeState;
-};
-
+export type AppStore = typeof store;
 /**
- * The shape of the theme state.
+ * The type of the store's dispatch
  */
-export interface ThemeState {
-    /** The color scheme for the current theme. */
-    colorScheme: 'dark' | 'light' | 'system';
-    /** The accent type for the current theme. */
-    accentType: 'default' | 'custom';
-    /** The custom accent color to use if the accent type is set to custom. */
-    customAccentColor: ColorHex;
-};
+export type AppDispatch = typeof store.dispatch;

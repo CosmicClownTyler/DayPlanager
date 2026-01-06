@@ -1,0 +1,1 @@
+export { useThemeColors, useThemeColorScheme } from './theme';

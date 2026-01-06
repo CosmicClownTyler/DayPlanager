@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type { ColorHex } from '@/src/theme/colors';
 
-import type { AppState, ThemeState } from './types';
+import type { ThemeState } from './types';
 
 export const defaultThemeState: ThemeState = {
     colorScheme: 'system',
@@ -49,8 +49,3 @@ export const {
     customAccentColor,
     setThemeAccentColor,
 } = themeSlice.actions;
-
-export const selectTheme = (state: AppState) => state.settings.theme;
-export const selectThemeColorScheme = (state: AppState) => state.settings.theme.colorScheme;
-export const selectThemeAccentType = (state: AppState) => state.settings.theme.accentType;
-export const selectThemeCustomAccentColor = (state: AppState) => state.settings.theme.customAccentColor;

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Provider } from 'react-redux';
 
-import { store } from '@/src/store';
+import { store } from '@/src/store/';
 
 import { HomeIcon, SettingsIcon } from '@/src/components/TabBarIcons';
 
@@ -13,7 +13,7 @@ import SettingsScreen from '@/src/screens/SettingsScreen';
 
 import type { RootBottomTabParamList } from '@/src/app/Navigation';
 
-import { useThemeColors } from '@/src/hooks/store';
+import { useThemeColors } from '@/src/hooks/settings/theme/';
 
 export default function App() {
     return (
