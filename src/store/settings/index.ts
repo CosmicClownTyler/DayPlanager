@@ -1,2 +1,2 @@
-export type { SettingsState } from './types';
 export { settingsReducer } from './reducer';
+export type { SettingsState } from './types';

@@ -1,19 +1,15 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Provider } from 'react-redux';
 
-import { store } from '@/src/store/';
-
-import { HomeIcon, SettingsIcon } from '@/src/components/TabBarIcons';
-
+import type { RootBottomTabParamList } from '@/src/app/Navigation';
+import { HomeIcon, SettingsIcon } from '@/src/components/TabBarIcons/';
+import { useThemeColors } from '@/src/hooks/settings/theme/';
 import HomeScreen from '@/src/screens/HomeScreen';
 import SettingsScreen from '@/src/screens/SettingsScreen';
-
-import type { RootBottomTabParamList } from '@/src/app/Navigation';
-
-import { useThemeColors } from '@/src/hooks/settings/theme/';
+import { store } from '@/src/store/';
 
 export default function App() {
     return (

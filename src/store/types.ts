@@ -1,5 +1,4 @@
 import { store } from './reducer';
-
 import type { SettingsState } from './settings/types';
 
 /**

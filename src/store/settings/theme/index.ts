@@ -1,14 +1,19 @@
-export type { ThemeState } from './types';
 export {
-    defaultThemeState,
-    themeSlice,
-    themeReducer,
-    revertToDefaultTheme,
-    automaticColorScheme,
-    darkColorScheme,
-    lightColorScheme,
     automaticAccentColor,
+    automaticColorScheme,
     customAccentColor,
+    darkColorScheme,
+    defaultThemeState,
+    lightColorScheme,
+    revertToDefaultTheme,
     setThemeAccentColor,
+    themeReducer,
+    themeSlice
 } from './reducer';
-export { selectTheme, selectThemeColorScheme, selectThemeAccentType, selectThemeCustomAccentColor } from './selectors';
+export {
+    selectTheme,
+    selectThemeAccentType,
+    selectThemeColorScheme,
+    selectThemeCustomAccentColor
+} from './selectors';
+export type { ThemeState } from './types';
