@@ -1,3 +1,5 @@
+import { ColorHex } from '@/src/features/ColorPicker/';
+
 /**
  * Interface for a color theme, defining the scheme (dark or light) and all necessary colors
  */
@@ -17,5 +19,3 @@ export interface ColorTheme {
     /** The color used for accents and specific visual focal points. Determined by theme accent type */
     accent: ColorHex;
 };
-
-export type ColorHex = `#${string}`;

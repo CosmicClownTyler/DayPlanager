@@ -1,2 +1,2 @@
 export { DarkColorTheme, LightColorTheme } from './themes';
-export type { ColorHex, ColorTheme } from './types';
+export type { ColorTheme } from './types';

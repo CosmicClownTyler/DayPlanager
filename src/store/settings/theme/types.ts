@@ -1,4 +1,4 @@
-import type { ColorHex } from '@/src/theme/colors/';
+import type { ColorHex } from '@/src/features/ColorPicker/';
 
 /**
  * The shape of the theme state
