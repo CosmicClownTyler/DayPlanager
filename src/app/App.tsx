@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 
 import type { RootBottomTabParamList } from '@/src/app/Navigation';
-import { HomeIcon, SettingsIcon } from '@/src/components/TabBarIcons';
+import { HomeIcon, SettingsIcon } from '@/src/components/navigation/TabBarIcons/';
 import { useThemeColors } from '@/src/hooks/settings/theme/';
 import HomeScreen from '@/src/screens/HomeScreen';
 import SettingsScreen from '@/src/screens/SettingsScreen';

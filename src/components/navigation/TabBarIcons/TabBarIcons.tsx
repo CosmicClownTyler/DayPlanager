@@ -1,9 +1,6 @@
 import { Image } from 'react-native';
 
-export interface TabBarIconProps {
-    color: string;
-    size: number;
-};
+import { TabBarIconProps } from './types';
 
 export function HomeIcon({ color, size }: TabBarIconProps) {
     return (<Image
