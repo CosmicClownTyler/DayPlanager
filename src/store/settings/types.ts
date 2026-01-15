@@ -1,5 +1,5 @@
-import { PreferencesState } from "./preferences/types";
-import { ThemeState } from "./theme/types";
+import { PreferencesState } from './preferences/types';
+import { ThemeState } from './theme/types';
 
 /**
  * The shape of the settings state
