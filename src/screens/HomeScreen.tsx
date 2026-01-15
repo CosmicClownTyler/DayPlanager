@@ -1,22 +1,24 @@
-import { StyleSheet, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { Page } from '@/src/components/layout/Page/';
+import { Header } from '@/src/components/themed/Header';
+
+import { HomeLandingProps, HomeStackParamList } from '@/src/app/Navigation';
+
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
 export default function HomeScreen() {
     return (
-        <SafeAreaView style={styles.container} edges={['left', 'right', 'top']}>
-            <Text style={styles.text}>Home</Text>
-        </SafeAreaView>
+        <HomeStack.Navigator initialRouteName='Landing' screenOptions={{ headerShown: false }} >
+            <HomeStack.Screen name='Landing' component={Landing} />
+        </HomeStack.Navigator>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    text: {
-        color: '#fff',
-    },
-});
+function Landing({ navigation, route }: HomeLandingProps) {
+    return (
+        <Page>
+            <Header title='Home' />
+        </Page>
+    );
+};
