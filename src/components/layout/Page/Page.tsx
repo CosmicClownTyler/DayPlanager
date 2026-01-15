@@ -1,6 +1,6 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useThemeColors } from '@/src/hooks/settings/theme/';
+import { useThemeColors } from '@/hooks/settings/theme/';
 
 import { pageStyles } from './styles';
 import type { PageProps } from './types';

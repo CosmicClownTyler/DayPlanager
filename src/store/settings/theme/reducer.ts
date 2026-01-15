@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { ColorHex } from '@/src/features/ColorPicker/';
+import type { ColorHex } from '@/features/ColorPicker/';
 
 import type { ThemeState } from './types';
 

@@ -4,12 +4,12 @@ import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 
-import type { RootBottomTabParamList } from '@/src/app/Navigation';
-import { HomeIcon, SettingsIcon } from '@/src/components/navigation/TabBarIcons/';
-import { useThemeColors } from '@/src/hooks/settings/theme/';
-import HomeScreen from '@/src/screens/HomeScreen';
-import SettingsScreen from '@/src/screens/SettingsScreen';
-import { store } from '@/src/store/';
+import type { RootBottomTabParamList } from '@/app/Navigation';
+import { HomeIcon, SettingsIcon } from '@/components/navigation/TabBarIcons/';
+import { useThemeColors } from '@/hooks/settings/theme/';
+import HomeScreen from '@/screens/HomeScreen';
+import SettingsScreen from '@/screens/SettingsScreen';
+import { store } from '@/store/';
 
 export default function App() {
     return (

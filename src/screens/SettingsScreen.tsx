@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Page } from '@/src/components/layout/Page/';
-import { Header } from '@/src/components/themed/Header';
+import { Page } from '@/components/layout/Page/';
+import { Header } from '@/components/themed/Header';
 
 import {
     SettingsAboutProps,
@@ -13,7 +13,7 @@ import {
     SettingsNotificationsProps,
     SettingsStackParamList,
     SettingsThemeProps,
-} from '@/src/app/Navigation';
+} from '@/app/Navigation';
 import { Button } from 'react-native';
 
 const SettingsStack = createNativeStackNavigator<SettingsStackParamList>();

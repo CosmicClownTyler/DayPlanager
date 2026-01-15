@@ -1,6 +1,6 @@
 import type { ImageSourcePropType, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-import type { ColorHex } from '@/src/features/ColorPicker/';
+import type { ColorHex } from '@/features/ColorPicker/';
 
 type HeaderSide =
     | { type: 'text'; value: string; onPress?: () => void; }

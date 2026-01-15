@@ -1,4 +1,4 @@
-import { ColorHex } from '@/src/features/ColorPicker/';
+import { ColorHex } from '@/features/ColorPicker/';
 
 /**
  * Interface for a color theme, defining the scheme (dark or light) and all necessary colors

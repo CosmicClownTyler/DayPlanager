@@ -1,4 +1,4 @@
-import type { Weekday } from '@/src/features/Calendar';
+import type { Weekday } from '@/features/Calendar';
 
 /**
  * The shape of the preferences state

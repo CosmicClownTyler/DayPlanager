@@ -1,7 +1,7 @@
-import type { HeaderProps } from '@/src/components/primitives/Header/';
-import { Header as BaseHeader } from '@/src/components/primitives/Header/';
+import type { HeaderProps } from '@/components/primitives/Header/';
+import { Header as BaseHeader } from '@/components/primitives/Header/';
 
-import { useThemeColors } from '@/src/hooks/settings/theme/';
+import { useThemeColors } from '@/hooks/settings/theme/';
 
 export function Header(props: HeaderProps) {
     // Deconstruct props

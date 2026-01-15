@@ -1,9 +1,9 @@
 import { useColorScheme } from 'react-native';
 
-import { useAppSelector } from '@/src/hooks/store/';
-import { selectThemeAccentType, selectThemeColorScheme, selectThemeCustomAccentColor } from '@/src/store/settings/theme/';
-import type { ColorTheme } from '@/src/theme/colors/';
-import { DarkColorTheme, LightColorTheme } from '@/src/theme/colors/';
+import { useAppSelector } from '@/hooks/store/';
+import { selectThemeAccentType, selectThemeColorScheme, selectThemeCustomAccentColor } from '@/store/settings/theme/';
+import type { ColorTheme } from '@/theme/colors/';
+import { DarkColorTheme, LightColorTheme } from '@/theme/colors/';
 
 // Hook for getting the theme's color scheme ('light' or 'dark')
 export const useThemeColorScheme = () => {

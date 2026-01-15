@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { Weekday } from '@/src/features/Calendar';
+import type { Weekday } from '@/features/Calendar';
 
 import type { PreferencesState } from './types';
 

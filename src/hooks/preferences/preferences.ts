@@ -1,5 +1,5 @@
-import { useAppSelector } from '@/src/hooks/store/';
-import { selectPreferencesWeekStartsOn } from '@/src/store/settings/preferences/';
+import { useAppSelector } from '@/hooks/store/';
+import { selectPreferencesWeekStartsOn } from '@/store/settings/preferences/';
 
 // Hook for getting the day the week starts on
 export const usePreferencesWeekStartsOn = () => {

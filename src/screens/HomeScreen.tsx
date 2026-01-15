@@ -1,9 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Page } from '@/src/components/layout/Page/';
-import { Header } from '@/src/components/themed/Header';
+import { Page } from '@/components/layout/Page/';
+import { Header } from '@/components/themed/Header';
 
-import { HomeLandingProps, HomeStackParamList } from '@/src/app/Navigation';
+import { HomeLandingProps, HomeStackParamList } from '@/app/Navigation';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
