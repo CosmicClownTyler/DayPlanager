@@ -1,0 +1,1 @@
+export type { PressableProps } from 'react-native';

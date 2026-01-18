@@ -1,4 +1,7 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+import { Image } from '@/components/primitives/Image/';
+import { Pressable } from '@/components/primitives/Pressable/';
 
 import { headerStyles } from './styles';
 import type { HeaderProps } from './types';
@@ -39,9 +42,9 @@ export function Header(props: HeaderProps) {
         // Configure the behaviour if onPress is set
         if (left.onPress) {
             leftComponent = (
-                <TouchableOpacity onPress={left.onPress}>
+                <Pressable onPress={left.onPress}>
                     {leftComponent}
-                </TouchableOpacity>
+                </Pressable>
             );
         }
     }
@@ -72,9 +75,9 @@ export function Header(props: HeaderProps) {
         // Configure the behaviour if onPress is set
         if (right.onPress) {
             rightComponent = (
-                <TouchableOpacity onPress={right.onPress}>
+                <Pressable onPress={right.onPress}>
                     {rightComponent}
-                </TouchableOpacity>
+                </Pressable>
             );
         }
     }
