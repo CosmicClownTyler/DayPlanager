@@ -17,10 +17,10 @@ import {
     SettingsStackParamList,
     SettingsThemeProps,
 } from '@/app/Navigation';
-import { usePreferencesWeekStartsOn } from '@/hooks/settings/preferences';
+import { usePreferencesWeekStartsOn, usePreferencesShowExtraDays } from '@/hooks/settings/preferences';
 import { useThemeAccentType, useThemeColorScheme } from '@/hooks/settings/theme';
 import { useAppDispatch } from '@/hooks/store/';
-import { setWeekStartsOn } from '@/store/settings/preferences/';
+import { setWeekStartsOn, setShowExtraDaysTrue, setShowExtraDaysFalse } from '@/store/settings/preferences/';
 import {
     setAutomaticAccentColor,
     setAutomaticColorScheme,
@@ -115,10 +115,19 @@ function DateTime({ navigation, route }: SettingsDateTimeProps) {
     // Get necessary state
     const dispatch = useAppDispatch();
     const weekStartsOn = usePreferencesWeekStartsOn();
+    const showExtraDays = usePreferencesShowExtraDays();
 
     // Functions for changing preferences
     const setWeekStartDay = (day: Weekday) => {
         dispatch(setWeekStartsOn(day));
+    };
+    const setShowExtraDays = (showExtraDays: boolean) => {
+        if (showExtraDays) {
+            dispatch(setShowExtraDaysTrue());
+        }
+        else {
+            dispatch(setShowExtraDaysFalse());
+        }
     };
 
     return (
@@ -175,6 +184,20 @@ function DateTime({ navigation, route }: SettingsDateTimeProps) {
                             cellStyle='Basic'
                             accessory={weekStartsOn == 'saturday' ? 'Checkmark' : undefined}
                             onPress={() => setWeekStartDay('saturday')}
+                        />
+                    </Section>
+                    <Section header='Show Extra Days'>
+                        <Cell
+                            title='Yes'
+                            cellStyle='Basic'
+                            accessory={showExtraDays ? 'Checkmark' : undefined}
+                            onPress={() => setShowExtraDays(true)}
+                        />
+                        <Cell
+                            title='No'
+                            cellStyle='Basic'
+                            accessory={!showExtraDays ? 'Checkmark' : undefined}
+                            onPress={() => setShowExtraDays(false)}
                         />
                     </Section>
                 </Table>

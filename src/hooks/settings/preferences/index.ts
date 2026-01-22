@@ -1,1 +1,4 @@
-export { usePreferencesWeekStartsOn } from './preferences';
+export {
+    usePreferencesShowExtraDays,
+    usePreferencesWeekStartsOn
+} from './preferences';
