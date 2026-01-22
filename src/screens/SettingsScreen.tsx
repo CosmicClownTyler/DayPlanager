@@ -1,7 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Page } from '@/components/layout/Page/';
-import { Header } from '@/components/themed/Header';
+import { Header } from '@/components/themed/Header/';
+import { ScrollView } from '@/components/themed/ScrollView/';
+import { Cell, Section, Table } from '@/components/themed/Table/';
+import { BodyText } from '@/components/themed/Text/';
 
 import {
     SettingsAboutProps,
@@ -14,7 +17,21 @@ import {
     SettingsStackParamList,
     SettingsThemeProps,
 } from '@/app/Navigation';
-import { Button } from 'react-native';
+import { usePreferencesWeekStartsOn } from '@/hooks/settings/preferences';
+import { useThemeAccentType, useThemeColorScheme } from '@/hooks/settings/theme';
+import { useAppDispatch } from '@/hooks/store/';
+import { setWeekStartsOn } from '@/store/settings/preferences/';
+import {
+    setAutomaticAccentColor,
+    setAutomaticColorScheme,
+    setCustomAccentColor,
+    setDarkColorScheme,
+    setLightColorScheme,
+    setThemeAccentColor,
+} from '@/store/settings/theme/';
+
+import type { Weekday } from '@/features/Calendar/';
+import type { ColorHex } from '@/features/ColorPicker/';
 
 const SettingsStack = createNativeStackNavigator<SettingsStackParamList>();
 
@@ -37,19 +54,73 @@ function Landing({ navigation, route }: SettingsLandingProps) {
     return (
         <Page>
             <Header title='Settings' />
-            <Button title='Date & Time' onPress={() => { navigation.navigate('DateTime'); }} />
-            <Button title='Notifications' onPress={() => { navigation.navigate('Notifications'); }} />
-            <Button title='Behaviour' onPress={() => { navigation.navigate('Behaviour'); }} />
-            <Button title='Layout' onPress={() => { navigation.navigate('Layout'); }} />
-            <Button title='Theme' onPress={() => { navigation.navigate('Theme'); }} />
-            <Button title='About' onPress={() => { navigation.navigate('About'); }} />
-            <Button title='Credits' onPress={() => { navigation.navigate('Credits'); }} />
+            <ScrollView>
+                <Table>
+                    <Section header='General'>
+                        <Cell
+                            title='Date & Time'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('DateTime'); }}
+                        />
+                        <Cell
+                            title='Notifications'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('Notifications'); }}
+                        />
+                        <Cell
+                            title='Behaviour'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('Behaviour'); }}
+                        />
+                    </Section>
+                    <Section header='Display & Appearance'>
+                        <Cell
+                            title='Layout'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('Layout'); }}
+                        />
+                        <Cell
+                            title='Theme & Colors'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('Theme'); }}
+                        />
+                    </Section>
+                    <Section header='About'>
+                        <Cell
+                            title='About Day Planager'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('About'); }}
+                        />
+                        <Cell
+                            title='Credits'
+                            cellStyle='Basic'
+                            accessory='DisclosureIndicator'
+                            onPress={() => { navigation.navigate('Credits'); }}
+                        />
+                    </Section>
+                </Table>
+            </ScrollView>
         </Page>
     );
 };
 
 // General
 function DateTime({ navigation, route }: SettingsDateTimeProps) {
+    // Get necessary state
+    const dispatch = useAppDispatch();
+    const weekStartsOn = usePreferencesWeekStartsOn();
+
+    // Functions for changing preferences
+    const setWeekStartDay = (day: Weekday) => {
+        dispatch(setWeekStartsOn(day));
+    };
+
     return (
         <Page>
             <Header
@@ -60,6 +131,54 @@ function DateTime({ navigation, route }: SettingsDateTimeProps) {
                     onPress: navigation.goBack
                 }}
             />
+            <ScrollView>
+                <Table>
+                    <Section header='First Day of the Week'>
+                        <Cell
+                            title='Sunday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'sunday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('sunday')}
+                        />
+                        <Cell
+                            title='Monday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'monday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('monday')}
+                        />
+                        <Cell
+                            title='Tuesday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'tuesday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('tuesday')}
+                        />
+                        <Cell
+                            title='Wednesday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'wednesday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('wednesday')}
+                        />
+                        <Cell
+                            title='Thursday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'thursday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('thursday')}
+                        />
+                        <Cell
+                            title='Friday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'friday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('friday')}
+                        />
+                        <Cell
+                            title='Saturday'
+                            cellStyle='Basic'
+                            accessory={weekStartsOn == 'saturday' ? 'Checkmark' : undefined}
+                            onPress={() => setWeekStartDay('saturday')}
+                        />
+                    </Section>
+                </Table>
+            </ScrollView>
         </Page>
     );
 };
@@ -108,16 +227,81 @@ function Layout({ navigation, route }: SettingsLayoutProps) {
     );
 };
 function Theme({ navigation, route }: SettingsThemeProps) {
+    // Get necessary state
+    const dispatch = useAppDispatch();
+    const themeColorScheme = useThemeColorScheme();
+    const themeAccentType = useThemeAccentType();
+
+    // Functions for changing theme scheme and accent color
+    const setSchemeAutomatic = () => {
+        dispatch(setAutomaticColorScheme());
+    };
+    const setSchemeDark = () => {
+        dispatch(setDarkColorScheme());
+    };
+    const setSchemeLight = () => {
+        dispatch(setLightColorScheme());
+    };
+    const setAccentDefault = () => {
+        dispatch(setAutomaticAccentColor());
+    };
+    const setAccentCustom = () => {
+        dispatch(setCustomAccentColor());
+    };
+    const setAccentColor = (color: ColorHex) => {
+        dispatch(setThemeAccentColor(color));
+    };
+
     return (
         <Page>
             <Header
-                title='Theme'
+                title='Theme & Colors'
                 left={{
                     type: 'image',
                     value: require('@/assets/icons/arrow-left.png'),
                     onPress: navigation.goBack
                 }}
             />
+            <ScrollView>
+                <Table>
+                    <Section header='Theme'>
+                        <Cell
+                            title='System'
+                            cellStyle='Basic'
+                            accessory={themeColorScheme == 'system' ? 'Checkmark' : undefined}
+                            onPress={setSchemeAutomatic}
+                        />
+                        <Cell
+                            title='Dark'
+                            cellStyle='Basic'
+                            accessory={themeColorScheme == 'dark' ? 'Checkmark' : undefined}
+                            onPress={setSchemeDark}
+                        />
+                        <Cell
+                            title='Light'
+                            cellStyle='Basic'
+                            accessory={themeColorScheme == 'light' ? 'Checkmark' : undefined}
+                            onPress={setSchemeLight}
+                        />
+                    </Section>
+                    <Section header='Accent Colors'>
+                        <Cell
+                            title='Default'
+                            cellStyle='Basic'
+                            accessory={themeAccentType == 'default' ? 'Checkmark' : undefined}
+                            onPress={setAccentDefault}
+                        />
+                        <Cell
+                            title='Custom'
+                            cellStyle='Basic'
+                            accessory={themeAccentType == 'custom' ? 'Checkmark' : undefined}
+                            onPress={setAccentCustom}
+                        />
+                    </Section>
+                </Table>
+                {/* TODO */}
+                {/* {themeAccentType == 'custom' && <ColorPicker />} */}
+            </ScrollView>
         </Page>
     );
 };
@@ -127,13 +311,18 @@ function About({ navigation, route }: SettingsAboutProps) {
     return (
         <Page>
             <Header
-                title='About'
+                title='About the App'
                 left={{
                     type: 'image',
                     value: require('@/assets/icons/arrow-left.png'),
                     onPress: navigation.goBack
                 }}
             />
+            <ScrollView>
+                <BodyText>
+                    Day Planager is a task manager, calendar, and reminders app, with a focus on customizability and optimization for personal workflows.
+                </BodyText>
+            </ScrollView>
         </Page>
     );
 };
@@ -148,6 +337,21 @@ function Credits({ navigation, route }: SettingsCreditsProps) {
                     onPress: navigation.goBack
                 }}
             />
+            <ScrollView>
+                <BodyText>
+                    This app was created solely by me (Tyler Dalke), without using any code written from third parties, whether that be resources, blogs, or generative AI tools.
+                </BodyText>
+                <BodyText style={{ paddingTop: 0 }}>
+                    I did refer to appropriate documentation throughout development, such as language, framework, or library documentation,
+                    with the occasional reference of blogs and forums like Stack Overflow and Medium.
+                </BodyText>
+                <BodyText style={{ paddingTop: 0 }}>
+                    However, no code was taken directly from any source; both documentation and forum code was used as a reference to learn and then implement/fix something on my own.
+                </BodyText>
+                <BodyText style={{ paddingTop: 0 }}>
+                    All code, designs, and icons were created by me.
+                </BodyText>
+            </ScrollView>
         </Page>
     );
 };
