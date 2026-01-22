@@ -5,8 +5,12 @@ import { selectThemeAccentType, selectThemeColorScheme, selectThemeCustomAccentC
 import type { ColorTheme } from '@/theme/colors/';
 import { DarkColorTheme, LightColorTheme } from '@/theme/colors/';
 
-// Hook for getting the theme's color scheme ('light' or 'dark')
+// Hook for getting the theme's color scheme ('system' or 'light' or 'dark')
 export const useThemeColorScheme = () => {
+    return useAppSelector(state => selectThemeColorScheme(state));
+};
+// Hook for getting the theme's actual color scheme ('light' or 'dark')
+export const useThemeActualColorScheme = () => {
     // Get the color scheme from the theme state
     const colorScheme = useAppSelector(state => selectThemeColorScheme(state));
 
@@ -27,14 +31,20 @@ export const useThemeColorScheme = () => {
         return colorScheme;
     }
 };
+// Hook for getting the theme's accent type ('default' or 'custom')
+export const useThemeAccentType = () => {
+    return useAppSelector(state => selectThemeAccentType(state));
+}
+// Hook for getting the theme's custom accent color
+export const useThemeCustomAccentColor = () => {
+    return useAppSelector(state => selectThemeCustomAccentColor(state));
+}
 // Hook for getting the theme's colors
 export const useThemeColors = () => {
-    // Get the accent type and custom accent color from the theme state
-    const accentType = useAppSelector(state => selectThemeAccentType(state));
-    const customAccentColor = useAppSelector(state => selectThemeCustomAccentColor(state));
-
-    // Get the theme's color scheme
-    const colorScheme = useThemeColorScheme();
+    // Get the accent type, custom accent color, and color scheme
+    const accentType = useThemeAccentType();
+    const customAccentColor = useThemeCustomAccentColor();
+    const colorScheme = useThemeActualColorScheme();
 
     // Set the colors based on the color scheme
     let colors = colorScheme == 'dark' ? { ...DarkColorTheme } : { ...LightColorTheme };

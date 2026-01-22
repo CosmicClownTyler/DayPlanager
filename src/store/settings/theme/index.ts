@@ -1,11 +1,11 @@
 export {
-    automaticAccentColor,
-    automaticColorScheme,
-    customAccentColor,
-    darkColorScheme,
     defaultThemeState,
-    lightColorScheme,
     revertToDefaultTheme,
+    setAutomaticAccentColor,
+    setAutomaticColorScheme,
+    setCustomAccentColor,
+    setDarkColorScheme,
+    setLightColorScheme,
     setThemeAccentColor,
     themeReducer,
     themeSlice

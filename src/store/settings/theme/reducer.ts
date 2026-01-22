@@ -17,19 +17,19 @@ export const themeSlice = createSlice({
         revertToDefaultTheme: () => {
             return defaultThemeState;
         },
-        automaticColorScheme: (state) => {
+        setAutomaticColorScheme: (state) => {
             state.colorScheme = 'system';
         },
-        darkColorScheme: (state) => {
+        setDarkColorScheme: (state) => {
             state.colorScheme = 'dark';
         },
-        lightColorScheme: (state) => {
+        setLightColorScheme: (state) => {
             state.colorScheme = 'light';
         },
-        automaticAccentColor: (state) => {
+        setAutomaticAccentColor: (state) => {
             state.accentType = 'default';
         },
-        customAccentColor: (state) => {
+        setCustomAccentColor: (state) => {
             state.accentType = 'custom';
         },
         setThemeAccentColor: (state, action: PayloadAction<ColorHex>) => {
@@ -42,10 +42,10 @@ export const themeReducer = themeSlice.reducer;
 
 export const {
     revertToDefaultTheme,
-    automaticColorScheme,
-    darkColorScheme,
-    lightColorScheme,
-    automaticAccentColor,
-    customAccentColor,
+    setAutomaticColorScheme,
+    setDarkColorScheme,
+    setLightColorScheme,
+    setAutomaticAccentColor,
+    setCustomAccentColor,
     setThemeAccentColor,
 } = themeSlice.actions;

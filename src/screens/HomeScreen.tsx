@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Page } from '@/components/layout/Page/';
 import { Header } from '@/components/themed/Header';
 
-import { HomeLandingProps, HomeStackParamList } from '@/app/Navigation';
+import type { HomeLandingProps, HomeStackParamList } from '@/app/Navigation';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
